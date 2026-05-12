@@ -45,14 +45,19 @@
                                         <td class="border p-3">{{ $task->title }}</td>
                                         <td class="border p-3">{{ $task->priority }}</td>
                                         <td class="border p-3">{{ $task->status }}</td>
+                                        <td class="border p-3">{{ $task->due_date ?? 'Sin fecha' }}</td>
                                         <td class="border p-3">
-                                            {{ $task->due_date ?? 'Sin fecha' }}
+                                            <div class="flex gap-2">
+                                                <a href="{{ route('tasks.edit', $task) }}"
+                                                class="bg-amber-500 text-white px-3 py-1 rounded-md hover:bg-amber-600">Editar</a>
+                                                <form method="POST" action="{{ route('tasks.destroy', $task) }}"
+                                                    onsubmit="return confirm('¿Deseas eliminar esta tarea?')">@csrf @method('DELETE')
+                                                    <button type="submit"
+                                                            class="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700">Eliminar</button>
+                                                </form>
+                                            </div>
                                         </td>
-                                        <td class="border p-3">
-                                            <a href="{{ route('tasks.edit', $task) }}"
-                                                class="bg-amber-500 text-white px-3 py-1 rounded-md hover:bg-amber-600">Editar
-                                            </a>
-                                        </td>
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>

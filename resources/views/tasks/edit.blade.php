@@ -78,16 +78,12 @@
                     <div class="mt-6 flex gap-3">
                         <button
                             type="submit"
-                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-                        >
-                            Actualizar tarea
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Actualizar tarea
                         </button>
 
                         <a
                             href="{{ route('tasks.index') }}"
-                            class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
-                        >
-                            Cancelar
+                            class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Cancelar
                         </a>
                     </div>
                 </form>
