@@ -77,7 +77,7 @@
                     <div class="mt-6 flex gap-3">
                         <button
                             type="submit"
-                            class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Guardar tarea</button>
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Guardar tarea</button>
 
                         <a
                             href="{{ route('tasks.index') }}"

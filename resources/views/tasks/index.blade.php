@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-blue-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             Mis tareas
         </h2>
     </x-slot>
@@ -19,7 +19,7 @@
                     </h3>
 
                     <a href="{{ route('tasks.create') }}"
-                       class="bg-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-700">
+                       class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
                         Nueva tarea
                     </a>
                 </div>
@@ -28,6 +28,31 @@
                     <p class="text-gray-500">No hay tareas registradas.</p>
                 @else
                     <div class="overflow-x-auto">
+                        @php
+                            $priorityClasses = [
+                                'low' => 'bg-green-100 text-green-700',
+                                'medium' => 'bg-yellow-100 text-yellow-700',
+                                'high' => 'bg-red-100 text-red-700',
+                            ];
+
+                            $priorityLabels = [
+                                'low' => 'Baja',
+                                'medium' => 'Media',
+                                'high' => 'Alta',
+                            ];
+
+                            $statusClasses = [
+                                'pending' => 'bg-gray-100 text-gray-700',
+                                'in_progress' => 'bg-blue-100 text-blue-700',
+                                'completed' => 'bg-green-100 text-green-700',
+                            ];
+
+                            $statusLabels = [
+                                'pending' => 'Pendiente',
+                                'in_progress' => 'En proceso',
+                                'completed' => 'Completada',
+                            ];
+                        @endphp
                         <table class="w-full border-collapse">
                             <thead>
                                 <tr class="bg-gray-100">
@@ -43,8 +68,17 @@
                                 @foreach ($tasks as $task)
                                     <tr>
                                         <td class="border p-3">{{ $task->title }}</td>
-                                        <td class="border p-3">{{ $task->priority }}</td>
-                                        <td class="border p-3">{{ $task->status }}</td>
+                                        <td class="border p-3">
+                                            <span class="px-3 py-1 rounded-full text-sm font-medium {{ $priorityClasses[$task->priority] }}">
+                                                {{ $priorityLabels[$task->priority] }}
+                                            </span>
+                                        </td>
+
+                                        <td class="border p-3">
+                                            <span class="px-3 py-1 rounded-full text-sm font-medium {{ $statusClasses[$task->status] }}">
+                                                {{ $statusLabels[$task->status] }}
+                                            </span>
+                                        </td>
                                         <td class="border p-3">{{ $task->due_date ?? 'Sin fecha' }}</td>
                                         <td class="border p-3">
                                             <div class="flex gap-2">
