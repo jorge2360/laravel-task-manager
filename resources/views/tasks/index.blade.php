@@ -28,6 +28,48 @@
                     <p class="text-gray-500">No hay tareas registradas.</p>
                 @else
                     <div class="overflow-x-auto">
+                        <form method="GET" action="{{ route('tasks.index') }}" class="mb-6 grid grid-cols-1 gap-4 md:grid-cols-4">
+                            <div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Buscar</label>
+                                    <input
+                                        type="text"
+                                        name="search"
+                                        value="{{ request('search') }}"
+                                        placeholder="Título o descripción"
+                                        class="mt-1 w-full rounded-md border-gray-300 shadow-sm"
+                                    >
+                                </div>
+                                <label class="block text-sm font-medium text-gray-700">Estado</label>
+                                <select name="status" class="mt-1 w-full rounded-md border-gray-300 shadow-sm">
+                                    <option value="">Todos</option>
+                                    <option value="pending" @selected(request('status') === 'pending')>Pendiente</option>
+                                    <option value="in_progress" @selected(request('status') === 'in_progress')>En proceso</option>
+                                    <option value="completed" @selected(request('status') === 'completed')>Completada</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Prioridad</label>
+                                <select name="priority" class="mt-1 w-full rounded-md border-gray-300 shadow-sm">
+                                    <option value="">Todas</option>
+                                    <option value="low" @selected(request('priority') === 'low')>Baja</option>
+                                    <option value="medium" @selected(request('priority') === 'medium')>Media</option>
+                                    <option value="high" @selected(request('priority') === 'high')>Alta</option>
+                                </select>
+                            </div>
+
+                            <div class="flex items-end gap-2">
+                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                                    Filtrar
+                                </button>
+
+                                <a href="{{ route('tasks.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+                                    Limpiar
+                                </a>
+                            </div>
+                        </form>
+
                         @php
                             $priorityClasses = [
                                 'low' => 'bg-green-100 text-green-700',

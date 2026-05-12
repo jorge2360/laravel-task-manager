@@ -12,15 +12,29 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::where('user_id', Auth::id())
-            ->latest()
-            ->get();
+        $query = Task::where('user_id', Auth::id());
+
+        if ($request->filled('search')) {
+            $query->where(function ($subQuery) use ($request) {
+                $subQuery->where('title', 'like', '%' . $request->search . '%')
+                    ->orWhere('description', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('priority')) {
+            $query->where('priority', $request->priority);
+        }
+
+        $tasks = $query->latest()->get();
 
         return view('tasks.index', compact('tasks'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
