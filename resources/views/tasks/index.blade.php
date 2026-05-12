@@ -19,7 +19,7 @@
                     </h3>
 
                     <a href="{{ route('tasks.create') }}"
-                       class="bg-blue-600 text-blue px-4 py-2 rounded-md hover:bg-blue-700">
+                       class="bg-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-700">
                         Nueva tarea
                     </a>
                 </div>
@@ -49,7 +49,9 @@
                                             {{ $task->due_date ?? 'Sin fecha' }}
                                         </td>
                                         <td class="border p-3">
-                                            Próximamente
+                                            <a href="{{ route('tasks.edit', $task) }}"
+                                                class="bg-amber-500 text-white px-3 py-1 rounded-md hover:bg-amber-600">Editar
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

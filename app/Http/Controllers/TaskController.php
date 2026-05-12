@@ -64,7 +64,11 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        if ($task->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -72,7 +76,23 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        if ($task->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'priority' => 'required|in:low,medium,high',
+            'status' => 'required|in:pending,in_progress,completed',
+            'due_date' => 'nullable|date',
+        ]);
+
+        $task->update($validated);
+
+        return redirect()
+            ->route('tasks.index')
+            ->with('success', 'Tarea actualizada correctamente.');
     }
 
     /**
