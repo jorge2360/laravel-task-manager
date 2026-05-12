@@ -26,7 +26,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create');
     }
 
     /**
@@ -34,8 +34,22 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'priority' => 'required|in:low,medium,high',
+            'status' => 'required|in:pending,in_progress,completed',
+            'due_date' => 'nullable|date',
+        ]);
+
+        $validated['user_id'] = Auth::id();
+
+        Task::create($validated);
+
+        return redirect()
+            ->route('tasks.index')
+            ->with('success', 'Tarea creada correctamente.');
+        }
 
     /**
      * Display the specified resource.

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-blue-800 leading-tight">
             Mis tareas
         </h2>
     </x-slot>
@@ -9,12 +9,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg p-6">
                 <div class="flex justify-between items-center mb-6">
+                    @if (session('success'))
+                        <div class="mb-4 rounded-md bg-green-100 p-3 text-green-700">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <h3 class="text-lg font-semibold text-gray-700">
                         Listado de tareas
                     </h3>
 
                     <a href="{{ route('tasks.create') }}"
-                       class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                       class="bg-blue-600 text-blue px-4 py-2 rounded-md hover:bg-blue-700">
                         Nueva tarea
                     </a>
                 </div>
