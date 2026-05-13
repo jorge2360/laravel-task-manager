@@ -17,10 +17,10 @@
                             type="text"
                             name="title"
                             value="{{ old('title') }}"
-                            class="mt-1 w-full rounded-md border-gray-300 shadow-sm"
+                            class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         >
                         @error('title')
-                            <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                            <p class="mt-1 text-sm font-medium text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
@@ -28,35 +28,35 @@
                         <label class="block text-sm font-medium text-gray-700">Descripción</label>
                         <textarea
                             name="description"
-                            class="mt-1 w-full rounded-md border-gray-300 shadow-sm"
+                            class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         >{{ old('description') }}</textarea>
                         @error('description')
-                            <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                            <p class="mt-1 text-sm font-medium text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Prioridad</label>
-                            <select name="priority" class="mt-1 w-full rounded-md border-gray-300 shadow-sm">
+                            <select name="priority" class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                 <option value="low">Baja</option>
                                 <option value="medium" selected>Media</option>
                                 <option value="high">Alta</option>
                             </select>
                             @error('priority')
-                                <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                                <p class="mt-1 text-sm font-medium text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Estado</label>
-                            <select name="status" class="mt-1 w-full rounded-md border-gray-300 shadow-sm">
+                            <select name="status" class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                 <option value="pending">Pendiente</option>
                                 <option value="in_progress">En proceso</option>
                                 <option value="completed">Completada</option>
                             </select>
                             @error('status')
-                                <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                                <p class="mt-1 text-sm font-medium text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -66,10 +66,10 @@
                                 type="date"
                                 name="due_date"
                                 value="{{ old('due_date') }}"
-                                class="mt-1 w-full rounded-md border-gray-300 shadow-sm"
+                                class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                             >
                             @error('due_date')
-                                <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                                <p class="mt-1 text-sm font-medium text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>

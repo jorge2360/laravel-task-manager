@@ -37,11 +37,11 @@
                                         name="search"
                                         value="{{ request('search') }}"
                                         placeholder="Título o descripción"
-                                        class="mt-1 w-full rounded-md border-gray-300 shadow-sm"
+                                        class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                     >
                                 </div>
                                 <label class="block text-sm font-medium text-gray-700">Estado</label>
-                                <select name="status" class="mt-1 w-full rounded-md border-gray-300 shadow-sm">
+                                <select name="status" class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                     <option value="">Todos</option>
                                     <option value="pending" @selected(request('status') === 'pending')>Pendiente</option>
                                     <option value="in_progress" @selected(request('status') === 'in_progress')>En proceso</option>
@@ -51,7 +51,7 @@
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Prioridad</label>
-                                <select name="priority" class="mt-1 w-full rounded-md border-gray-300 shadow-sm">
+                                <select name="priority" class="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                     <option value="">Todas</option>
                                     <option value="low" @selected(request('priority') === 'low')>Baja</option>
                                     <option value="medium" @selected(request('priority') === 'medium')>Media</option>
