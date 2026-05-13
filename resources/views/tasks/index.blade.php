@@ -7,10 +7,10 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg p-6">
+            <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
                 <div class="flex justify-between items-center mb-6">
                     @if (session('success'))
-                        <div class="mb-4 rounded-md bg-green-100 p-3 text-green-700">
+                        <div class="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 text-green-700"class="mb-6 rounded-xl border border-green-200 bg-green-50 p-4 text-green-700">
                             {{ session('success') }}
                         </div>
                     @endif
@@ -19,7 +19,7 @@
                     </h3>
 
                     <a href="{{ route('tasks.create') }}"
-                       class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                       class="bg-blue-600 text-white px-4 py-2 rounded-xl shadow-sm transition hover:bg-blue-700 hover:scale-[1.02]">
                         Nueva tarea
                     </a>
                 </div>
@@ -60,11 +60,11 @@
                             </div>
 
                             <div class="flex items-end gap-2">
-                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-xl shadow-sm transition hover:bg-blue-700 hover:scale-[1.02]">
                                     Filtrar
                                 </button>
 
-                                <a href="{{ route('tasks.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
+                                <a href="{{ route('tasks.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-xl shadow-sm transition hover:bg-gray-600 hover:scale-[1.02]">
                                     Limpiar
                                 </a>
                             </div>
@@ -95,41 +95,41 @@
                                 'completed' => 'Completada',
                             ];
                         @endphp
-                        <table class="w-full border-collapse">
+                        <table class="w-full overflow-hidden rounded-xl"><table class="w-full overflow-hidden rounded-xl">
                             <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="border p-3 text-left">Título</th>
-                                    <th class="border p-3 text-left">Prioridad</th>
-                                    <th class="border p-3 text-left">Estado</th>
-                                    <th class="border p-3 text-left">Fecha límite</th>
-                                    <th class="border p-3 text-left">Acciones</th>
+                                <tr class="bg-gray-50">
+                                    <th class="border-b border-gray-200 p-4 text-left text-sm font-semibold text-gray-700">Título</th>
+                                    <th class="border-b border-gray-200 p-4 text-left text-sm font-semibold text-gray-700">Prioridad</th>
+                                    <th class="border-b border-gray-200 p-4 text-left text-sm font-semibold text-gray-700">Estado</th>
+                                    <th class="border-b border-gray-200 p-4 text-left text-sm font-semibold text-gray-700">Fecha límite</th>
+                                    <th class="border-b border-gray-200 p-4 text-left text-sm font-semibold text-gray-700">Acciones</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach ($tasks as $task)
-                                    <tr>
-                                        <td class="border p-3">{{ $task->title }}</td>
-                                        <td class="border p-3">
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="border-b border-gray-100 p-4 text-sm text-gray-700">{{ $task->title }}</td>
+                                        <td class="border-b border-gray-100 p-4 text-sm text-gray-700">
                                             <span class="px-3 py-1 rounded-full text-sm font-medium {{ $priorityClasses[$task->priority] }}">
                                                 {{ $priorityLabels[$task->priority] }}
                                             </span>
                                         </td>
 
-                                        <td class="border p-3">
+                                        <td class="border-b border-gray-100 p-4 text-sm text-gray-700">
                                             <span class="px-3 py-1 rounded-full text-sm font-medium {{ $statusClasses[$task->status] }}">
                                                 {{ $statusLabels[$task->status] }}
                                             </span>
                                         </td>
-                                        <td class="border p-3">{{ $task->due_date ?? 'Sin fecha' }}</td>
-                                        <td class="border p-3">
+                                        <td class="border-b border-gray-100 p-4 text-sm text-gray-700">{{ $task->due_date ?? 'Sin fecha' }}</td>
+                                        <td class="border-b border-gray-100 p-4 text-sm text-gray-700">
                                             <div class="flex gap-2">
                                                 <a href="{{ route('tasks.edit', $task) }}"
-                                                class="bg-amber-500 text-white px-3 py-1 rounded-md hover:bg-amber-600">Editar</a>
+                                                class="bg-amber-500 text-white px-3 py-1 rounded-xl transition hover:bg-amber-600">Editar</a>
                                                 <form method="POST" action="{{ route('tasks.destroy', $task) }}"
                                                     onsubmit="return confirm('¿Deseas eliminar esta tarea?')">@csrf @method('DELETE')
                                                     <button type="submit"
-                                                            class="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700">Eliminar</button>
+                                                            class="bg-red-600 text-white px-3 py-1 rounded-xl transition hover:bg-red-700">Eliminar</button>
                                                 </form>
                                             </div>
                                         </td>

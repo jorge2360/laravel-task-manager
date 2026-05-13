@@ -7,7 +7,7 @@
 
     <div class="py-8">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg p-6">
+            <div class="bg-white shadow-md rounded-2xl p-6">
                 <form method="POST" action="{{ route('tasks.store') }}">
                     @csrf
 
@@ -77,11 +77,11 @@
                     <div class="mt-6 flex gap-3">
                         <button
                             type="submit"
-                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Guardar tarea</button>
+                            class="bg-blue-600 text-white px-4 py-2 rounded-xl shadow-sm transition hover:bg-blue-700 hover:scale-[1.02]">Guardar tarea</button>
 
                         <a
                             href="{{ route('tasks.index') }}"
-                            class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Cancelar
+                            class="bg-gray-500 text-white px-4 py-2 rounded-xl shadow-sm transition hover:bg-gray-600 hover:scale-[1.02]">Cancelar
                         </a>
                     </div>
                 </form>
